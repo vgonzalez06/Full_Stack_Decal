@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600" role="img" aria-label="Bicycle illustration">
+<rect width="800" height="600" fill="#f8dca8"/>
+<circle cx="640" cy="130" r="58" fill="#e8a33a" opacity="0.85"/>
+<path d="M0 360 C 160 280, 300 330, 420 300 S 680 250, 800 300 V 600 H 0 Z" fill="#dfe5c3"/>
+<path d="M0 420 C 200 380, 420 420, 800 390 V 600 H 0 Z" fill="#3e5228" opacity="0.25"/>
+<line x1="60" y1="510" x2="740" y2="510" stroke="#2a1a10" stroke-width="5" stroke-linecap="round"/>
+<g fill="none" stroke="#2a1a10" stroke-width="2" opacity="0.4"><line x1="220" y1="400" x2="320.0" y2="400.0"/><line x1="220" y1="400" x2="306.6" y2="450.0"/><line x1="220" y1="400" x2="270.0" y2="486.6"/><line x1="220" y1="400" x2="220.0" y2="500.0"/><line x1="220" y1="400" x2="170.0" y2="486.6"/><line x1="220" y1="400" x2="133.4" y2="450.0"/><line x1="220" y1="400" x2="120.0" y2="400.0"/><line x1="220" y1="400" x2="133.4" y2="350.0"/><line x1="220" y1="400" x2="170.0" y2="313.4"/><line x1="220" y1="400" x2="220.0" y2="300.0"/><line x1="220" y1="400" x2="270.0" y2="313.4"/><line x1="220" y1="400" x2="306.6" y2="350.0"/><line x1="580" y1="400" x2="680.0" y2="400.0"/><line x1="580" y1="400" x2="666.6" y2="450.0"/><line x1="580" y1="400" x2="630.0" y2="486.6"/><line x1="580" y1="400" x2="580.0" y2="500.0"/><line x1="580" y1="400" x2="530.0" y2="486.6"/><line x1="580" y1="400" x2="493.4" y2="450.0"/><line x1="580" y1="400" x2="480.0" y2="400.0"/><line x1="580" y1="400" x2="493.4" y2="350.0"/><line x1="580" y1="400" x2="530.0" y2="313.4"/><line x1="580" y1="400" x2="580.0" y2="300.0"/><line x1="580" y1="400" x2="630.0" y2="313.4"/><line x1="580" y1="400" x2="666.6" y2="350.0"/></g>
+<g fill="none" stroke="#2a1a10" stroke-width="12"><circle cx="220" cy="400" r="105"/><circle cx="580" cy="400" r="105"/></g>
+<g fill="none" stroke="#c93650" stroke-width="14" stroke-linejoin="round" stroke-linecap="round">
+  <path d="M220 400 L 390 400 L 340 245 Z"/>
+  <path d="M340 245 L 535 255 L 390 400"/>
+  <path d="M535 255 L 580 400"/>
+</g>
+<g stroke="#2a1a10" stroke-width="12" stroke-linecap="round">
+  <line x1="310" y1="225" x2="372" y2="225"/>
+  <line x1="527" y1="230" x2="545" y2="200"/><line x1="532" y1="200" x2="580" y2="196"/>
+</g>
+<circle cx="390" cy="400" r="16" fill="#2a1a10"/>
+</svg>

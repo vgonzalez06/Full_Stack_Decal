@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Resume of Viktor Gonzalez: Data Science and Economics at UC Berkeley, with experience in machine learning, LLM engineering and data engineering.">
+  <meta name="author" content="Viktor Cervantes Gonzalez">
+  <title>Resume · Viktor Gonzalez</title>
+
+  <!-- Google Fonts: Mochiy Pop One (headings) and Zen Maru Gothic (body text) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap">
+
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">Viktor Gonzalez</a>
+      <nav class="site-nav" aria-label="Main">
+        <ul class="nav-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="resume.html" aria-current="page">Resume</a></li>
+        </ul>
+        <button class="theme-toggle" type="button" aria-label="Switch to dark theme">☾ Dark</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-intro" aria-labelledby="resume-title">
+      <div class="container">
+        <p class="eyebrow">Background</p>
+        <h1 id="resume-title">Resume</h1>
+        <p class="lead">Where I've studied, what I've worked on, and the skills I bring.</p>
+        <!-- assets/resume.pdf is a copy of the resume with the phone number removed -->
+        <a class="btn" href="assets/resume.pdf" download>↓ Download resume (PDF)</a>
+      </div>
+    </section>
+
+    <!-- ============ Education ============ -->
+    <section class="section" aria-labelledby="education-title">
+      <div class="container resume-block">
+        <h2 id="education-title">Education</h2>
+        <div class="entries">
+          <article class="entry">
+            <p class="entry-date">Expected May 2028</p>
+            <h3>University of California, Berkeley</h3>
+            <p class="entry-meta">B.A. Data Science · B.A. Economics</p>
+            <p>Relevant coursework: Data Structures &amp; Algorithms, Structure and Interpretation of Computer Programs, Econometrics, Linear Algebra &amp; Differential Equations, Discrete Mathematics, Advanced Probability, Financial Economics.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Experience ============ -->
+    <section class="section" aria-labelledby="experience-title">
+      <div class="container resume-block">
+        <h2 id="experience-title">Experience</h2>
+        <div class="entries">
+          <article class="entry">
+            <p class="entry-date">Aug 2026 – Present</p>
+            <h3>Technical Project Manager</h3>
+            <p class="entry-meta">EPC Power Corp. · Computer Vision / Machine Learning · Berkeley, CA</p>
+            <ul class="entry-points">
+              <li>Leading a 6-person team building a computer vision system that detects PCB manufacturing defects (solder bridges, cable inserts), and serving as the main liaison to the client's engineering team.</li>
+              <li>Overseeing a containerized Docker inference service with asynchronous REST job processing, and planning the AWS infrastructure for production.</li>
+              <li>Managing training and evaluation of YOLO object detection models on precision, recall, mAP and inference performance.</li>
+            </ul>
+          </article>
+          <article class="entry">
+            <p class="entry-date">Aug 2026 – Present</p>
+            <h3>Software Engineering Intern</h3>
+            <p class="entry-meta">ConflictQuery · LLM Engineering / Full Stack · Berkeley, CA</p>
+            <ul class="entry-points">
+              <li>Built and deployed a serverless LLM app (Next.js, TypeScript, Vercel) that classifies governance scenarios with schema-enforced Gemini API output grounded in 129 policy sections, logging per-request validation metrics to Firestore.</li>
+              <li>Cut inference latency by over 60% through model configuration tuning, and worst-case failure recovery from 63s to 7.5s with jittered retry backoff.</li>
+              <li>Benchmarked context caching against structured output on cost and latency, and documented the results in an architecture decision record.</li>
+            </ul>
+          </article>
+          <article class="entry">
+            <p class="entry-date">Jan 2026 – May 2026</p>
+            <h3>Technical Project Manager</h3>
+            <p class="entry-meta">Aflac · Data Engineering, OCR &amp; Analytics · Berkeley, CA</p>
+            <ul class="entry-points">
+              <li>Led an enterprise data engineering engagement with Aflac, managing scope, timelines and delivery for a 6-person cross-functional team of engineers and analysts.</li>
+              <li>Owned delivery of a repeatable ETL pipeline that extracts and tabularizes 5+ years of U.S. Department of Labor Form 5500 filings into a queryable dataset of 1M+ records.</li>
+              <li>Defined requirements, success metrics and data scope with Aflac stakeholders, and implemented quality validation and error analysis workflows.</li>
+            </ul>
+          </article>
+          <article class="entry">
+            <p class="entry-date">Sep 2025 – Jan 2026</p>
+            <h3>Data Engineer Consultant</h3>
+            <p class="entry-meta">Egen AI · ML Engineering &amp; Applied Analytics · Berkeley, CA</p>
+            <ul class="entry-points">
+              <li>Built and deployed a hybrid machine learning system on Google Cloud Platform that automates project role allocation and effort estimation from both unstructured text and structured historical data.</li>
+              <li>Designed a scalable data pipeline with BigQuery and Cloud Functions, and trained and evaluated models, including Transformers and XGBoost, on Vertex AI to predict staffing needs.</li>
+              <li>Led the project from data ingestion and model selection (optimizing MAPE and interval scores) through migration, documentation and knowledge transfer.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Skills ============ -->
+    <section class="section" aria-labelledby="skills-title">
+      <div class="container resume-block">
+        <h2 id="skills-title">Skills</h2>
+        <div class="skill-groups">
+          <div class="skill-group">
+            <h3>Programming</h3>
+            <ul class="skill-list">
+              <li>Python</li>
+              <li>Java</li>
+              <li>SQL</li>
+              <li>R</li>
+              <li>TypeScript</li>
+            </ul>
+          </div>
+          <div class="skill-group">
+            <h3>ML &amp; Analytics</h3>
+            <ul class="skill-list">
+              <li>Scikit-learn</li>
+              <li>XGBoost</li>
+              <li>Transformers</li>
+              <li>YOLO</li>
+              <li>Feature Engineering</li>
+              <li>Model Evaluation</li>
+            </ul>
+          </div>
+          <div class="skill-group">
+            <h3>Cloud &amp; Infrastructure</h3>
+            <ul class="skill-list">
+              <li>GCP (BigQuery, Vertex AI, Cloud Functions)</li>
+              <li>AWS (S3)</li>
+              <li>Docker</li>
+              <li>Vercel</li>
+              <li>Firestore</li>
+            </ul>
+          </div>
+          <div class="skill-group">
+            <h3>Data &amp; Tools</h3>
+            <ul class="skill-list">
+              <li>Pandas</li>
+              <li>NumPy</li>
+              <li>ETL &amp; Data Pipelines</li>
+              <li>Performance Benchmarking</li>
+              <li>Streamlit</li>
+              <li>Plotly</li>
+              <li>Git &amp; GitHub</li>
+              <li>Excel</li>
+            </ul>
+          </div>
+          <div class="skill-group">
+            <h3>Languages</h3>
+            <ul class="skill-list">
+              <li>Spanish (native)</li>
+              <li>English</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© 2026 Viktor Gonzalez</p>
+      <ul class="footer-links">
+        <li><a href="https://github.com/vgonzalez06">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/vikgonz">LinkedIn</a></li>
+        <li><a href="mailto:vgonzalez28@berkeley.edu">Email</a></li>
+      </ul>
+    </div>
+  </footer>
+</body>
+</html>

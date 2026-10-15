@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600" role="img" aria-label="Salsa illustration">
+<rect width="800" height="600" fill="#f7d3cc"/>
+<path d="M60 420 C 200 260, 300 520, 420 330 S 640 180, 760 260" fill="none" stroke="#c93650" stroke-width="34" stroke-linecap="round"/>
+<path d="M60 420 C 200 260, 300 520, 420 330 S 640 180, 760 260" fill="none" stroke="#2a1a10" stroke-width="4" stroke-dasharray="1 12" stroke-linecap="round" transform="translate(0 46)"/>
+<path d="M80 250 C 220 120, 330 330, 470 190 S 650 110, 740 150" fill="none" stroke="#3e5228" stroke-width="16" stroke-linecap="round"/>
+<g transform="translate(250 230) scale(1.0)" fill="#e8a33a" stroke="#2a1a10" stroke-width="4"><ellipse cx="0" cy="0" rx="26" ry="19" transform="rotate(-20)"/><path d="M22 -6 V -120 Q 60 -100 70 -60" fill="none" stroke-width="8" stroke-linecap="round"/></g><g transform="translate(560 420) scale(1.15)" fill="#c93650" stroke="#2a1a10" stroke-width="4"><ellipse cx="0" cy="0" rx="26" ry="19" transform="rotate(-20)"/><path d="M22 -6 V -120 Q 60 -100 70 -60" fill="none" stroke-width="8" stroke-linecap="round"/></g><g transform="translate(640 150) scale(0.85)" fill="#3e5228" stroke="#2a1a10" stroke-width="4"><ellipse cx="0" cy="0" rx="26" ry="19" transform="rotate(-20)"/><path d="M22 -6 V -120 Q 60 -100 70 -60" fill="none" stroke-width="8" stroke-linecap="round"/></g>
+<text x="400" y="545" text-anchor="middle" font-family="'Arial Rounded MT Bold', 'Helvetica Rounded', Arial, sans-serif" font-size="46" fill="#2a1a10">1 · 2 · 3 — 5 · 6 · 7</text>
+</svg>

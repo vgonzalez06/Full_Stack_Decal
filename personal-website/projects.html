@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Projects by Viktor Gonzalez: an LLM-powered equity research pipeline, an NFL quarterback prediction dashboard, and this website.">
+  <meta name="author" content="Viktor Cervantes Gonzalez">
+  <title>Projects · Viktor Gonzalez</title>
+
+  <!-- Google Fonts: Mochiy Pop One (headings) and Zen Maru Gothic (body text) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap">
+
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">Viktor Gonzalez</a>
+      <nav class="site-nav" aria-label="Main">
+        <ul class="nav-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="projects.html" aria-current="page">Projects</a></li>
+          <li><a href="resume.html">Resume</a></li>
+        </ul>
+        <button class="theme-toggle" type="button" aria-label="Switch to dark theme">☾ Dark</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-intro" aria-labelledby="projects-title">
+      <div class="container">
+        <p class="eyebrow">Selected work</p>
+        <h1 id="projects-title">Projects</h1>
+        <p class="lead">A few things I've built, from LLM pipelines to sports analytics, and what I learned along the way.</p>
+      </div>
+    </section>
+
+    <section class="section" aria-label="Project list">
+      <div class="container card-grid">
+        <!-- ============ Project 1 ============ -->
+        <article class="card project-card">
+          <img src="images/project-1.svg" alt="Illustration of a candlestick stock chart in front of a red sun" width="1200" height="750">
+          <div class="card-body">
+            <h2>Japan Equity Research Pipeline</h2>
+            <p>A 4-stage pipeline that scrapes same-day Tokyo Stock Exchange filings (TDnet/JPX) for 8 Japanese equity positions and reads the Japanese-language PDFs natively. Claude Haiku triages what's relevant and Claude Sonnet runs the deep thesis-impact analysis, cutting API cost about 3x. The result is an automated research report with per-position confidence scores and cross-position risk synthesis.</p>
+            <ul class="tags" aria-label="Tools used">
+              <li>Python</li>
+              <li>Anthropic API</li>
+              <li>BeautifulSoup</li>
+              <li>pdfminer</li>
+            </ul>
+            <!-- Add GitHub or demo links here if you publish this project -->
+          </div>
+        </article>
+
+        <!-- ============ Project 2 ============ -->
+        <article class="card project-card">
+          <img src="images/project-2.svg" alt="Illustration of a scatter plot with a regression line over a football field" width="1200" height="750">
+          <div class="card-body">
+            <h2>NFL QB Predictive Analytics Dashboard</h2>
+            <p>A machine learning pipeline that predicts college QBR from features engineered out of raw college stats, like EPA per play and efficiency ratios. It compares Linear, Ridge and KNN regression, tuned with GridSearchCV and 5-fold cross-validation. An interactive Streamlit dashboard shows live predictions, feature importance and model metrics with 95% confidence intervals.</p>
+            <ul class="tags" aria-label="Tools used">
+              <li>Python</li>
+              <li>Scikit-learn</li>
+              <li>Streamlit</li>
+              <li>Plotly</li>
+            </ul>
+            <!-- Add GitHub or demo links here if you publish this project -->
+          </div>
+        </article>
+
+        <!-- ============ Project 3 ============ -->
+        <article class="card project-card">
+          <img src="images/project-3.svg" alt="Illustration of this website shown in a browser window" width="1200" height="750">
+          <div class="card-body">
+            <h2>This website</h2>
+            <p>My personal site for Full Stack Decal, built from scratch with no frameworks or build step. It has a light/dark theme that remembers your choice, a contact form with inline validation, and a responsive layout that works from phones to desktops.</p>
+            <ul class="tags" aria-label="Tools used">
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>JavaScript</li>
+            </ul>
+            <p class="card-links">
+              <a href="https://github.com/vgonzalez06/Full_Stack_Decal/tree/main/personal-website">GitHub ↗</a>
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© 2026 Viktor Gonzalez</p>
+      <ul class="footer-links">
+        <li><a href="https://github.com/vgonzalez06">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/vikgonz">LinkedIn</a></li>
+        <li><a href="mailto:vgonzalez28@berkeley.edu">Email</a></li>
+      </ul>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,957 @@
+/* ==========================================================================
+   style.css: shared styles for every page
+   1. Variables   2. Base   3. Layout   4. Components   5. Pages   6. Media queries
+   The look: a "gummy" UI (thick candy outlines, glossy jelly buttons that
+   squish when you press them) with an umami color palette: soy sauce, dashi,
+   miso, kombu, umeboshi and tamago.
+   The layout is mobile-first: base styles target phones, and the media
+   queries at the bottom add columns on wider screens.
+   ========================================================================== */
+
+
+/* ==========================================================================
+   1. Variables
+   ========================================================================== */
+
+/* Light theme (the default) */
+:root {
+  --bg: #f2e6c9;            /* dashi broth */
+  --seed: rgba(60, 35, 15, 0.08);  /* faint sesame-seed dots in the background */
+  --surface: #fcf5e3;       /* silken tofu: cards */
+  --surface-alt: #f8dca8;   /* white miso: callout box */
+  --ink: #2a1a10;           /* soy sauce: main text */
+  --muted: #6b5340;         /* shiitake: secondary text */
+  --line: #2a1a10;          /* candy outlines */
+  --shadow: #2a1a10;        /* the solid "thickness" under gummy shapes */
+  --divider: #2a1a10;       /* wavy section dividers and the resume timeline */
+  --rule: #d9c8a2;          /* thin dotted lines */
+
+  --accent: #b8283f;        /* umeboshi (pickled plum): links, main buttons */
+  --accent-hi: #c93650;     /* lighter top of the umeboshi gradient */
+  --on-accent: #fff4e0;     /* text on umeboshi */
+  --miso: #d98a2b;
+  --miso-hi: #f3b55e;
+  --on-miso: #2a1a10;
+  --kombu: #3e5228;         /* kelp green */
+  --kombu-hi: #536b33;
+  --on-kombu: #f6efd9;
+  --tamago: #f5c542;        /* egg yellow: stickers, theme button */
+  --highlight: #f5c542;     /* marker smear behind the name */
+
+  /* Tag "flavors" (cycled on project tags) */
+  --tag-a-bg: #dfe5c3;
+  --tag-a-ink: #33441f;
+  --tag-b-bg: #f8dca8;
+  --tag-b-ink: #6e3f0a;
+  --tag-c-bg: #f7cfd3;
+  --tag-c-ink: #8a1d2f;
+
+  --error: #a3152c;
+  --success-bg: #dfe5c3;
+  --success-ink: #2f3f1c;
+
+  --font-display: "Mochiy Pop One", "Arial Rounded MT Bold", system-ui, sans-serif;
+  --font-body: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", system-ui, sans-serif;
+
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2.5rem;
+  --space-5: 4rem;
+  --radius: 22px;
+  --radius-lg: 32px;
+  --outline: 3px solid var(--line);
+  --max-width: 1080px;
+
+  /* An easing curve that overshoots and settles back: the "gummy" bounce */
+  --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  /* Light along the top edge and shade along the bottom make shapes look like jelly */
+  --gloss: inset 0 4px 0 rgba(255, 255, 255, 0.35), inset 0 -5px 0 rgba(0, 0, 0, 0.15);
+  /* A wavy line, used as a mask so it can take any color */
+  --wave: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='16' viewBox='0 0 40 16'%3E%3Cpath d='M0 8 Q 10 0 20 8 T 40 8' fill='none' stroke='black' stroke-width='3.5'/%3E%3C/svg%3E");
+
+  color-scheme: light;      /* tells the browser to draw form controls and scrollbars in light mode */
+}
+
+/* Dark theme: main.js sets data-theme="dark" on <html> */
+:root[data-theme="dark"] {
+  --bg: #1d140e;            /* soy sauce */
+  --seed: rgba(243, 230, 200, 0.05);
+  --surface: #2b1e15;
+  --surface-alt: #3a2817;
+  --ink: #f3e6c8;           /* dashi */
+  --muted: #c4ad8c;
+  --line: #0c0805;
+  --shadow: #0c0805;
+  --divider: #e0a04f;       /* miso-colored waves stand out on the dark background */
+  --rule: #4a3626;
+
+  --accent: #ff7a8a;
+  --accent-hi: #ff9aa6;
+  --on-accent: #2a1a10;
+  --miso: #e8a04c;
+  --miso-hi: #f6c27d;
+  --kombu: #8fae5c;
+  --kombu-hi: #a6c472;
+  --on-kombu: #1d140e;
+  --highlight: #7a4f12;
+
+  --tag-a-bg: #34402a;
+  --tag-a-ink: #cfe0a8;
+  --tag-b-bg: #4a3218;
+  --tag-b-ink: #f6c98a;
+  --tag-c-bg: #4a1f26;
+  --tag-c-ink: #ffb3bd;
+
+  --error: #ff8a9a;
+  --success-bg: #34402a;
+  --success-ink: #cfe0a8;
+
+  color-scheme: dark;
+}
+
+
+/* ==========================================================================
+   2. Base
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg);
+  /* Sesame seeds: two offset grids of tiny dots */
+  background-image:
+    radial-gradient(var(--seed) 1.5px, transparent 2px),
+    radial-gradient(var(--seed) 1.5px, transparent 2px);
+  background-position: 0 0, 14px 14px;
+  background-size: 28px 28px;
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  font-weight: 500;
+  line-height: 1.7;
+  overflow-wrap: break-word;  /* long words or URLs wrap instead of causing sideways scroll */
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Mochiy Pop One only comes in one weight, so keep headings at 400 (no fake bold) */
+h1,
+h2,
+h3 {
+  margin: 0 0 var(--space-2);
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+/* clamp(min, preferred, max) scales the size with the screen width */
+h1 {
+  font-size: clamp(2.3rem, 6.5vw, 4.2rem);
+}
+
+h2 {
+  font-size: clamp(1.7rem, 4vw, 2.5rem);
+}
+
+h3 {
+  font-size: 1.2rem;
+}
+
+p {
+  margin: 0 0 var(--space-2);
+}
+
+a {
+  color: var(--accent);
+  font-weight: 700;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.2em;
+}
+
+a:hover {
+  text-decoration-style: wavy;
+}
+
+/* Keyboard focus ring (only shows for keyboard users, not mouse clicks) */
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: var(--tamago);
+  color: #2a1a10;
+}
+
+/* Hidden until a keyboard user tabs to it */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: var(--space-2);
+  z-index: 100;
+  padding: var(--space-1) var(--space-2);
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--bg);
+}
+
+.skip-link:focus {
+  top: var(--space-2);
+}
+
+
+/* ==========================================================================
+   3. Layout
+   ========================================================================== */
+
+/* Centers content and keeps a side gutter on small screens */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+.section {
+  position: relative;
+  padding-block: var(--space-5);
+}
+
+/* Wavy dividers: a 16px strip colored by --divider and cut into a wave by the mask */
+.section::before,
+.site-footer::before,
+.site-header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 16px;
+  background: var(--divider);
+  -webkit-mask: var(--wave) repeat-x center / 40px 16px;
+  mask: var(--wave) repeat-x center / 40px 16px;
+}
+
+.section::before,
+.site-footer::before {
+  top: -8px;
+}
+
+.section-head {
+  max-width: 40rem;
+  margin-bottom: var(--space-4);
+}
+
+/* Header and nav: flex-wrap lets the nav drop below the name on narrow screens */
+.site-header {
+  position: relative;
+  z-index: 10;
+  background: var(--bg);
+}
+
+.site-header::after {
+  bottom: -8px;
+}
+
+.header-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-1) var(--space-3);
+  padding-block: 0.9rem;
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-1) var(--space-2);
+}
+
+.nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Responsive card grid: as many 15rem-wide columns as fit, then they stretch to fill */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: var(--space-3);
+}
+
+/* Footer */
+.site-footer {
+  position: relative;
+  padding-block: var(--space-4);
+}
+
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.footer-inner p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footer-links a {
+  color: var(--ink);
+}
+
+.footer-links a:hover {
+  color: var(--accent);
+}
+
+
+/* ==========================================================================
+   4. Components
+   ========================================================================== */
+
+/* --- Brand (name in the top-left) --- */
+.brand {
+  display: inline-block;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 400;
+  text-decoration: none;
+  transition: transform 0.4s var(--spring), color 0.2s;
+}
+
+.brand:hover {
+  color: var(--accent);
+  transform: rotate(-3deg) scale(1.05);
+}
+
+/* --- Nav links: the current page is a glossy kombu-green jelly pill --- */
+.nav-list a {
+  display: block;
+  padding: 0.35rem 0.95rem;
+  border: 3px solid transparent;
+  border-radius: 999px;
+  color: var(--ink);
+  text-decoration: none;
+  transition: transform 0.4s var(--spring), border-color 0.2s;
+}
+
+.nav-list a:hover {
+  border-color: var(--line);
+  transform: rotate(-3deg) scale(1.06);
+}
+
+.nav-list a[aria-current="page"] {
+  border-color: var(--line);
+  background: linear-gradient(180deg, var(--kombu-hi), var(--kombu));
+  color: var(--on-kombu);
+  box-shadow: var(--gloss), 0 3px 0 var(--shadow);
+}
+
+/* --- Theme toggle: a tamago-yellow jelly button --- */
+.theme-toggle {
+  padding: 0.35rem 0.95rem;
+  border: var(--outline);
+  border-radius: 999px;
+  background: linear-gradient(180deg, #ffe08a, var(--tamago));
+  color: #2a1a10;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: var(--gloss), 0 3px 0 var(--shadow);
+  transition: transform 0.4s var(--spring), box-shadow 0.15s;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.07, 0.93);
+}
+
+.theme-toggle:active {
+  transform: translateY(2px) scale(1.1, 0.88);
+  box-shadow: var(--gloss), 0 1px 0 var(--shadow);
+}
+
+/* --- Small label above headings: a crooked yellow sticker --- */
+.eyebrow {
+  display: inline-block;
+  margin-bottom: var(--space-2);
+  padding: 0.2rem 0.85rem;
+  border: 2.5px solid var(--line);
+  border-radius: 999px;
+  background: var(--tamago);
+  color: #2a1a10;
+  font-size: 0.8rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  box-shadow: 0 3px 0 var(--shadow);
+  transform: rotate(-2deg);
+}
+
+/* --- Buttons: glossy jelly that squishes on hover and squashes on click --- */
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.5rem;
+  border: var(--outline);
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--accent-hi), var(--accent));
+  color: var(--on-accent);
+  font: inherit;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: var(--gloss), 0 5px 0 var(--shadow);
+  transition: transform 0.4s var(--spring), box-shadow 0.15s;
+}
+
+/* The little white shine on top, like light hitting a gummy candy */
+.btn::before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 16px;
+  width: 22px;
+  height: 7px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.55);
+  pointer-events: none;
+}
+
+.btn:hover {
+  transform: translateY(-2px) scale(1.05, 0.95);
+}
+
+.btn:active {
+  transform: translateY(4px) scale(1.08, 0.88);
+  box-shadow: var(--gloss), 0 1px 0 var(--shadow);
+  transition-duration: 0.1s;
+}
+
+.btn-secondary {
+  background: linear-gradient(180deg, var(--miso-hi), var(--miso));
+  color: var(--on-miso);
+}
+
+/* --- Cards (hobbies, projects, contact form) --- */
+.card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: var(--outline);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: 0 8px 0 var(--shadow);
+}
+
+/* Images sit inset in the card, with their own rounded outline */
+.card > img {
+  width: calc(100% - 20px);
+  margin: 10px 10px 0;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;  /* crops photos to fill the box instead of stretching them */
+  border: var(--outline);
+  border-radius: var(--radius);
+}
+
+/* Hobby and project cards wobble like jelly when you hover over them */
+.card-grid .card:hover {
+  animation: jiggle 0.6s ease-out;
+}
+
+@keyframes jiggle {
+  30% { transform: scale(1.03, 0.97); }
+  55% { transform: scale(0.98, 1.02); }
+  75% { transform: scale(1.01, 0.99); }
+}
+
+.card-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: var(--space-3);
+}
+
+.card-body p:last-child {
+  margin-bottom: 0;
+}
+
+/* --- Tags ("tools used" on project cards), cycling through three flavors --- */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 0 0 var(--space-2);
+  padding: 0;
+  list-style: none;
+}
+
+.tags li {
+  padding: 0.15rem 0.7rem;
+  border: 2px solid var(--line);
+  border-radius: 999px;
+  background: var(--tag-a-bg);
+  color: var(--tag-a-ink);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.tags li:nth-child(3n + 2) {
+  background: var(--tag-b-bg);
+  color: var(--tag-b-ink);
+}
+
+.tags li:nth-child(3n) {
+  background: var(--tag-c-bg);
+  color: var(--tag-c-ink);
+}
+
+/* --- Callout box --- */
+.callout {
+  align-self: start;
+  padding: var(--space-3);
+  border: var(--outline);
+  border-radius: var(--radius-lg);
+  background: var(--surface-alt);
+  box-shadow: 0 8px 0 var(--shadow);
+}
+
+.callout p:last-child {
+  margin-bottom: 0;
+}
+
+/* --- Form fields --- */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 1.25rem;
+}
+
+.field label {
+  font-weight: 700;
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border: var(--outline);
+  border-radius: 18px;
+  background: var(--bg);
+  color: var(--ink);
+  font: inherit;
+  box-shadow: inset 0 3px 0 rgba(0, 0, 0, 0.07);
+}
+
+.field textarea {
+  resize: vertical;
+}
+
+.field input:focus-visible,
+.field textarea:focus-visible {
+  outline-offset: 1px;
+}
+
+/* main.js sets aria-invalid="true" on fields that fail validation */
+.field [aria-invalid="true"] {
+  border-color: var(--error);
+}
+
+.field-error {
+  margin: 0;
+  color: var(--error);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.field-error:empty {
+  display: none;
+}
+
+/* Thank-you message: hidden while empty, shown once main.js fills it in */
+.form-status {
+  margin: var(--space-2) 0 0;
+  padding: 0.75rem 1rem;
+  border: 3px solid currentColor;
+  border-radius: 18px;
+  background: var(--success-bg);
+  color: var(--success-ink);
+  font-weight: 700;
+}
+
+.form-status:empty {
+  display: none;
+}
+
+/* The submit button shouldn't stretch across the form card */
+.contact-form .btn {
+  align-self: flex-start;
+}
+
+
+/* ==========================================================================
+   5. Pages
+   ========================================================================== */
+
+/* --- Home: intro (hero) --- */
+.hero-inner {
+  display: grid;
+  gap: var(--space-4);
+  align-items: center;
+  padding-block: var(--space-4) var(--space-5);
+}
+
+/* A tamago-yellow smear behind the name */
+.highlight {
+  background: linear-gradient(transparent 55%, var(--highlight) 55%, var(--highlight) 90%, transparent 90%);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.tagline {
+  color: var(--muted);
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.bio {
+  max-width: 36rem;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+
+.hero-photo {
+  justify-self: center;
+  width: 100%;
+  max-width: 22rem;
+  margin: 0;
+}
+
+/* The profile picture is a blob that slowly changes shape */
+.hero-photo img {
+  border: 4px solid var(--line);
+  border-radius: 46% 54% 52% 48% / 42% 46% 54% 58%;
+  box-shadow: 0 10px 0 var(--shadow);
+  animation: blob 10s ease-in-out infinite alternate;
+}
+
+@keyframes blob {
+  50% { border-radius: 58% 42% 45% 55% / 52% 58% 42% 48%; }
+  100% { border-radius: 42% 58% 60% 40% / 47% 40% 60% 53%; }
+}
+
+/* --- Home: scrolling ticker strip --- */
+.ticker {
+  overflow: hidden;
+  border-block: var(--outline);
+  background: var(--kombu);
+  color: var(--on-kombu);
+}
+
+/* The text appears twice, so sliding left by half loops seamlessly */
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: ticker 40s linear infinite;
+}
+
+.ticker-track span {
+  padding-block: 0.6rem;
+  font-family: var(--font-display);
+  white-space: nowrap;
+}
+
+@keyframes ticker {
+  to { transform: translateX(-50%); }
+}
+
+/* The ticker already has a border, so skip the wave on the section after it */
+.ticker + .section::before {
+  display: none;
+}
+
+/* --- Home: interests --- */
+.split {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.interest-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.interest-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding-block: 0.65rem;
+  border-bottom: 2px dotted var(--rule);
+  font-size: 1.15rem;
+}
+
+/* A little miso-colored sesame seed instead of the default bullet */
+.interest-list li::before {
+  content: "";
+  flex-shrink: 0;
+  width: 0.6rem;
+  height: 0.9rem;
+  border: 2px solid var(--line);
+  border-radius: 50%;
+  background: var(--miso);
+  transform: rotate(25deg);
+}
+
+/* --- Home: contact --- */
+.contact {
+  display: grid;
+  gap: var(--space-4);
+  align-items: start;
+}
+
+.contact-form {
+  padding: var(--space-3);
+}
+
+.field-row {
+  display: grid;
+  gap: 0 var(--space-2);
+}
+
+/* --- Projects and Resume: page title area --- */
+.page-intro .container {
+  padding-block: var(--space-5) var(--space-4);
+}
+
+.lead {
+  max-width: 38rem;
+  color: var(--muted);
+  font-size: 1.2rem;
+}
+
+.page-intro .btn {
+  margin-top: var(--space-1);
+}
+
+/* --- Projects --- */
+.project-card > img {
+  aspect-ratio: 16 / 10;
+}
+
+.project-card h2 {
+  font-size: 1.3rem;
+}
+
+/* Push the links to the bottom so they line up across cards */
+.card-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: auto;
+}
+
+/* --- Resume --- */
+.resume-block {
+  display: grid;
+  gap: var(--space-3);
+}
+
+/* Smaller than other h2s so long words like "Experience" fit the side column */
+.resume-block h2 {
+  font-size: clamp(1.6rem, 3vw, 1.75rem);
+}
+
+/* Timeline: a vertical line with a glossy gummy dot next to each entry */
+.entries {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.entry {
+  position: relative;
+  padding-left: var(--space-3);
+  border-left: 3px solid var(--divider);
+}
+
+.entry::before {
+  content: "";
+  position: absolute;
+  top: 0.35rem;
+  left: -10px;  /* centers the 17px dot on the 3px line */
+  width: 17px;
+  height: 17px;
+  border: 2.5px solid var(--line);
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.6) 0 18%, transparent 22%), var(--accent);
+}
+
+.entry-date {
+  margin-bottom: 0.25rem;
+  color: var(--accent);
+  font-size: 0.85rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.entry h3 {
+  margin-bottom: 0.25rem;
+}
+
+.entry-meta {
+  color: var(--muted);
+}
+
+.entry-points {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.entry-points li + li {
+  margin-top: 0.35rem;
+}
+
+.entry > :last-child {
+  margin-bottom: 0;
+}
+
+.skill-groups {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.skill-group h3 {
+  margin-bottom: 0.75rem;
+  color: var(--muted);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Skills wrap like gummy chips, each sized to its own text */
+.skill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.skill-list li {
+  padding: 0.35rem 0.9rem;
+  border: var(--outline);
+  border-radius: 999px;
+  background: var(--surface);
+  font-weight: 700;
+  box-shadow: 0 3px 0 var(--shadow);
+}
+
+
+/* ==========================================================================
+   6. Media queries
+   ========================================================================== */
+
+/* Small tablets and up: name and email side by side */
+@media (min-width: 40rem) {
+  .field-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Tablets and up: two-column layouts, sticky header */
+@media (min-width: 48rem) {
+  /* Keep anchor jumps (like #contact) from hiding under the sticky header */
+  html {
+    scroll-padding-top: 5rem;
+  }
+
+  .site-header {
+    position: sticky;
+    top: 0;
+  }
+
+  .hero-inner {
+    grid-template-columns: 1.3fr 1fr;
+    padding-block: var(--space-5);
+  }
+
+  .split {
+    grid-template-columns: 1.3fr 1fr;
+    align-items: center;
+  }
+
+  .contact {
+    grid-template-columns: 1fr 1.5fr;
+  }
+
+  /* Resume: section title on the left, entries on the right */
+  .resume-block {
+    grid-template-columns: 15rem 1fr;
+    gap: var(--space-4);
+  }
+}
+
+/* Respect the "reduce motion" accessibility setting: no bouncing, wobbling or scrolling */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .btn:hover,
+  .theme-toggle:hover,
+  .nav-list a:hover,
+  .brand:hover {
+    transform: none;
+  }
+}

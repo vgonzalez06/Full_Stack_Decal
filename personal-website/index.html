@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Viktor Gonzalez is a Data Science and Economics student at UC Berkeley who builds machine learning and data systems.">
+  <meta name="author" content="Viktor Cervantes Gonzalez">
+  <title>Viktor Gonzalez · Home</title>
+
+  <!-- Google Fonts: Mochiy Pop One (headings) and Zen Maru Gothic (body text) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap">
+
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">Viktor Gonzalez</a>
+      <nav class="site-nav" aria-label="Main">
+        <ul class="nav-list">
+          <li><a href="index.html" aria-current="page">Home</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="resume.html">Resume</a></li>
+        </ul>
+        <button class="theme-toggle" type="button" aria-label="Switch to dark theme">☾ Dark</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ============ Intro ============ -->
+    <section class="hero" aria-labelledby="intro-title">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <p class="eyebrow">01 — Hello</p>
+          <h1 id="intro-title">Hi, I'm <span class="highlight">Viktor</span>.</h1>
+          <p class="tagline">Data Science &amp; Economics at UC Berkeley, building machine learning and data systems.</p>
+          <p class="bio">I'm studying Data Science and Economics at UC Berkeley, graduating in May 2028. I lead and build projects across computer vision, LLM apps and data engineering, from defect detection for circuit-board manufacturing to a pipeline that turns years of federal filings into a 1M+ record dataset. Outside of class you'll find me climbing, dancing salsa, biking or playing table tennis.</p>
+          <div class="hero-actions">
+            <a class="btn" href="projects.html">See my projects</a>
+            <a class="btn btn-secondary" href="resume.html">View resume</a>
+          </div>
+        </div>
+        <figure class="hero-photo">
+          <!-- Swap in a real photo: save it as images/profile.jpg and change src below (see FILL_IN_GUIDE.md) -->
+          <img src="images/profile.svg" alt="Monogram with Viktor's initials, VG" width="800" height="1000">
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ Ticker ============ -->
+    <!-- Decorative scrolling strip. The text is repeated so the loop is seamless,
+         and aria-hidden keeps screen readers from reading it twice. -->
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track">
+        <span>computer vision ✺ LLM apps ✺ ETL pipelines ✺ econometrics ✺ rock climbing ✺ salsa ✺ biking ✺ table tennis ✺&nbsp;</span>
+        <span>computer vision ✺ LLM apps ✺ ETL pipelines ✺ econometrics ✺ rock climbing ✺ salsa ✺ biking ✺ table tennis ✺&nbsp;</span>
+      </div>
+    </div>
+
+    <!-- ============ Interests ============ -->
+    <section class="section" id="interests" aria-labelledby="interests-title">
+      <div class="container split">
+        <div>
+          <p class="eyebrow">02 — Interests</p>
+          <h2 id="interests-title">What I'm into</h2>
+          <ul class="interest-list">
+            <li>Machine learning &amp; computer vision</li>
+            <li>LLM apps and AI engineering</li>
+            <li>Data engineering &amp; ETL pipelines</li>
+            <li>Econometrics &amp; financial economics</li>
+            <li>Sports analytics</li>
+          </ul>
+        </div>
+        <aside class="callout">
+          <h3>Where I'm headed</h3>
+          <p>I want to keep building machine learning and data systems that make it all the way to production, especially where data science meets economics and finance.</p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ============ Hobbies ============ -->
+    <section class="section" id="hobbies" aria-labelledby="hobbies-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">03 — Hobbies</p>
+          <h2 id="hobbies-title">Off the clock</h2>
+        </div>
+        <div class="card-grid">
+          <article class="card">
+            <img src="images/hobby-1.svg" alt="Illustration of a climbing wall with colorful holds marking a route" width="800" height="600">
+            <div class="card-body">
+              <h3>Rock climbing</h3>
+              <p>Part problem-solving, part endurance. Every route is a puzzle you work out one move at a time.</p>
+            </div>
+          </article>
+          <article class="card">
+            <img src="images/hobby-2.svg" alt="Illustration of music notes and swirling lines above a salsa count" width="800" height="600">
+            <div class="card-body">
+              <h3>Salsa dancing</h3>
+              <p>Counting 1-2-3, 5-6-7 until the steps stop feeling like steps. It's fast, social and a good break from screens.</p>
+            </div>
+          </article>
+          <article class="card">
+            <img src="images/hobby-3.svg" alt="Illustration of a bicycle in front of rolling hills" width="800" height="600">
+            <div class="card-body">
+              <h3>Biking</h3>
+              <p>Getting outside on two wheels, whether it's a quick ride across town or a longer one to clear my head.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Contact ============ -->
+    <section class="section" id="contact" aria-labelledby="contact-title">
+      <div class="container contact">
+        <div class="contact-intro">
+          <p class="eyebrow">04 — Contact</p>
+          <h2 id="contact-title">Say hello</h2>
+          <p>Have a question, an idea, or just want to connect? Send me a note.</p>
+        </div>
+
+        <!-- novalidate turns off the browser's built-in popups so main.js can show its own inline errors -->
+        <form class="card contact-form" id="contact-form" novalidate>
+          <div class="field-row">
+            <div class="field">
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" autocomplete="name" required aria-describedby="name-error">
+              <p class="field-error" id="name-error"></p>
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" autocomplete="email" required aria-describedby="email-error">
+              <p class="field-error" id="email-error"></p>
+            </div>
+          </div>
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required aria-describedby="message-error"></textarea>
+            <p class="field-error" id="message-error"></p>
+          </div>
+          <button class="btn" type="submit">Send message</button>
+          <p class="form-status" id="form-status" role="status"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© 2026 Viktor Gonzalez</p>
+      <ul class="footer-links">
+        <li><a href="https://github.com/vgonzalez06">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/vikgonz">LinkedIn</a></li>
+        <li><a href="mailto:vgonzalez28@berkeley.edu">Email</a></li>
+      </ul>
+    </div>
+  </footer>
+</body>
+</html>
